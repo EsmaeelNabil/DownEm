@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.esmaeel.downem.VideoListActivity"
-    android:background="@drawable/bg2"
+    android:background="@drawable/citybgfull"
     android:orientation="vertical"
+    android:id="@+id/parent"
     >
 
 
@@ -18,33 +19,37 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="0.5"
             android:orientation="vertical"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="#581a1a1d"
+                android:paddingTop="4dp"
                 android:orientation="horizontal"
                 android:weightSum="2"
+                android:background="@drawable/searchedittext"
+
                 >
 
                 <EditText
                     android:id="@+id/searcheditText2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="3dp"
                     android:layout_weight="1.5"
-                    android:ems="10"
-                    android:hint="search keyword"
+                    android:hint="Search something "
                     android:inputType="textPersonName"
                     android:textColor="#f9f9f9f9"
-                    android:textColorHint="#f9f9f9f9" />
+                    android:textColorHint="#f9f9f9f9"
+                    android:background="@android:color/transparent"
+                    />
+
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -53,26 +58,39 @@
                     android:layout_gravity="center"
                     android:layout_marginRight="3dp"
                     android:layout_weight="0.5" />
+
+                <ImageView
+                    android:id="@+id/search_icon"
+                    android:layout_margin="10dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_search_white_24dp"/>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-               android:background="#581a1a1d"
+               android:background="#59543e59"
                 >
 
                 <Button
+                    android:visibility="gone"
                     android:id="@+id/Play_button"
+                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#fed73e55"
+                    android:background="@drawable/btnbgw"
                     android:text="Search"
-                    android:textColor="#f9ffffff" />
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:textSize="18.90sp"
+                    android:textColor="#2b2b2b" />
 
                 <ListView
                     android:id="@+id/search_list2"

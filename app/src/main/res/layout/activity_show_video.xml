@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="3"
-    android:background="#174153"
+    android:background="@drawable/downloadbg"
     tools:context="com.example.esmaeel.downem.ShowVideoActivity">
 
     <com.google.android.youtube.player.YouTubePlayerView
@@ -19,17 +19,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#131f25">
+        >
+
 
         <TextView
             android:id="@+id/titletv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
+            android:padding="10dp"
             android:text="Title"
+            android:gravity="center_horizontal"
             android:textAllCaps="true"
             android:textColor="#f9f9f9f9"
-            android:textSize="14sp" />
+            android:textSize="20sp"
+            android:background="#4d2f3c"
+            />
+
+        <TextView
+            android:background="#49994f50"
+            android:visibility="visible"
+            android:padding="10dp"
+            android:gravity="center_horizontal"
+            android:textColor="#fff"
+            android:id="@+id/descriptiontv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description Description Description Description Description Description Description Description Description  Description Description Description"
+            android:textSize="16sp" />
 
         <ProgressBar
             android:id="@+id/DownloadProgressbar"
@@ -41,44 +57,57 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#131f25"
-        android:paddingBottom="5dp">
+        android:orientation="vertical"
+        android:paddingBottom="0dp">
 
-        <Button
-            android:id="@+id/mp3button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#174153"
-            android:text="Download IN MP3"
-            android:textColor="#ffffff" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.01" />
 
         <Button
             android:id="@+id/Stopbutton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#de3930"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+
+            android:background="#ec524a"
             android:text="Cancel download"
             android:textColor="#ffffff" />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <ImageView
+
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:src="@drawable/ic_file_download_white_24dp" />
+
+            <Button
+                android:textAlignment="textStart"
+                android:layout_gravity="start"
+                android:paddingLeft="15dp"
+                android:id="@+id/mp3button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/searchedittext"
+                android:text="Download IN MP3"
+                android:textColor="#ffffff"
+                />
+
+        </FrameLayout>
+
+
     </LinearLayout>
 
-    <TextView
-        android:visibility="gone"
-        android:padding="16dp"
-        android:id="@+id/descriptiontv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Description"
-        android:textSize="16sp" />
+
 
     <ListView
+        android:background="@drawable/bgborder"
         android:id="@+id/search_list3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

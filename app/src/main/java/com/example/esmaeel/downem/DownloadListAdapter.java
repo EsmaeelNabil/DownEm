@@ -2,6 +2,7 @@ package com.example.esmaeel.downem;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ public class DownloadListAdapter extends ArrayAdapter<DownloadData> {
     }
 
     public View getView(int position, View convertView, ViewGroup parent){
-
+        Typeface font = Typeface.createFromAsset(getContext().getAssets(), "desc_font.ttf");
         // assign the view we are converting to a local variable
         View v = convertView;
 
@@ -53,9 +54,15 @@ public class DownloadListAdapter extends ArrayAdapter<DownloadData> {
         ViewHolder holder = (ViewHolder) v.getTag();
         DownloadData i = objects.get(position);
         holder.text.setText("id : ");
+        holder.text.setTypeface(font);
         holder.text2.setText(i.getId());
+        holder.text2.setTypeface(font);
         holder.text3.setText("lable : ");
+        holder.text3.setTypeface(font);
+
+
         holder.text4.setText(i.getLable());
+        holder.text4.setTypeface(font);
 
         DownloadListAdapter.this.notifyDataSetChanged();
 

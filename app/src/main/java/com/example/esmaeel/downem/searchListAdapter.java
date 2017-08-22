@@ -1,5 +1,6 @@
 package com.example.esmaeel.downem;
 
+import android.graphics.Typeface;
 import android.widget.ArrayAdapter;
 import android.content.Context;
 
@@ -10,17 +11,21 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class searchListAdapter extends ArrayAdapter<VideoData> {
     // declaring our ArrayList of items
 
     private ArrayList<VideoData> objects;
-    private ImageLoader imageLoader;
-
+    Context context;
     public searchListAdapter (Context context, int textViewResourceId, ArrayList<VideoData> objects) {
         super(context, textViewResourceId, objects);
         this.objects = objects;
+        this.context = context;
     }
 
     /*
@@ -53,8 +58,8 @@ public class searchListAdapter extends ArrayAdapter<VideoData> {
 
             // This is how you obtain a reference to the TextViews.
             // These TextViews are created in the XML files we defined.
-
-            NetworkImageView mm = (NetworkImageView)v.findViewById(R.id.profilepic);
+            Typeface font = Typeface.createFromAsset(getContext().getAssets(), "desc_font.ttf");
+            CircleImageView mm = (CircleImageView)v.findViewById(R.id.profilepic);
             TextView tt = (TextView) v.findViewById(R.id.txUsernametx);
             TextView title = (TextView) v.findViewById(R.id.txUsername);
             TextView mt = (TextView) v.findViewById(R.id.txGendertx);
@@ -69,6 +74,8 @@ public class searchListAdapter extends ArrayAdapter<VideoData> {
             }
             if (title != null){
                 title.setText(i.getTitle());
+                //here th type face
+                title.setTypeface(font);
             }
             if (mt != null){
                 mt.setText("video id : ");
@@ -81,15 +88,11 @@ public class searchListAdapter extends ArrayAdapter<VideoData> {
             }
             if (Description != null){
                 Description.setText(i.getDescription());
+                Description.setTypeface(font);
             }
 
             String url = i.getImageUrl() ;
-            imageLoader = CustomVolleyRequest.getInstance(this.getContext())
-                    .getImageLoader();
-            imageLoader.get(url, ImageLoader.getImageListener(mm,
-                    R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round));
-            mm.setImageUrl(url, imageLoader);
-
+            Picasso.with(context).load(url).into(mm);
         }
 
         searchListAdapter.this.notifyDataSetChanged();

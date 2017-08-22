@@ -3,15 +3,20 @@ package com.example.esmaeel.downem;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -23,6 +28,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,6 +45,8 @@ public class VideoListActivity extends AppCompatActivity {
     private LayoutInflater inflater;
     private View layout;
     private Toast toast;
+    private boolean listempty = true ;
+    private ImageView search_icon;
 
 
     private ListView searchList;
@@ -50,8 +58,11 @@ public class VideoListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_videolist);
-        queue = Volley.newRequestQueue(this);
 
+        setupUI(findViewById(R.id.parent));     // to hide keyboard when press outside
+
+        queue = Volley.newRequestQueue(this);
+        search_icon = (ImageView)findViewById(R.id.search_icon);
         progressBar=(ProgressBar)findViewById(R.id.progressBar);
         progressBar.setVisibility(View.INVISIBLE);
         searchList = (ListView) findViewById(R.id.search_list2);
@@ -59,6 +70,30 @@ public class VideoListActivity extends AppCompatActivity {
         searchList.setAdapter(Adapter);
 
         searchEd = (EditText) findViewById(R.id.searcheditText2);
+        searchEd.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String keyword = searchEd.getText().toString().trim().replaceAll(" ", "%20");
+                SearchThis(keyword);
+            }
+        });
+        search_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String keyword = searchEd.getText().toString().trim().replaceAll(" ", "%20");
+                SearchThis(keyword);
+            }
+        });
         searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -96,8 +131,9 @@ public class VideoListActivity extends AppCompatActivity {
 
     public void SearchThis(String KeyWord){
         progressBar.setVisibility(View.VISIBLE);
-        String FirstLink="https://www.googleapis.com/youtube/v3/search?part=snippet&q=";
+        String FirstLink="https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&q=";
         String LastLink="&key=AIzaSyDN3XsIXMV_vlHiDk2RMi4q0Ux6kcEg42Y";
+
         JsonObjectRequest jsonObjectRequest =
                 new JsonObjectRequest(Request.Method.GET, FirstLink + KeyWord + LastLink
                         , new Response.Listener<JSONObject>() {
@@ -133,7 +169,7 @@ public class VideoListActivity extends AppCompatActivity {
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            ShowThisToast("can't find any videos, Try another words!");
+//                            ShowThisToast("can't find any videos, Try another words!");
                             progressBar.setVisibility(View.INVISIBLE);
                             searchList.setSelectionAfterHeaderView();
 
@@ -165,5 +201,27 @@ public class VideoListActivity extends AppCompatActivity {
         toast.setView(layout);
         toast.show();
         //-----------------------------------------------
+    }
+
+    // to hide keyboard when press outside
+    public void setupUI(View view) {
+
+        // Set up touch listener for non-text box views to hide keyboard.
+        if (!(view instanceof EditText)) {
+            view.setOnTouchListener(new View.OnTouchListener() {
+                public boolean onTouch(View v, MotionEvent event) {
+                    hideSoftKeyboard(VideoListActivity.this);
+                    return false;
+                }
+            });
+        }
+
+        //If a layout container, iterate over children and seed recursion.
+        if (view instanceof ViewGroup) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                View innerView = ((ViewGroup) view).getChildAt(i);
+                setupUI(innerView);
+            }
+        }
     }
 }

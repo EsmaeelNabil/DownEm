@@ -3,6 +3,7 @@ package com.example.esmaeel.downem;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -37,6 +38,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 
+import static java.security.AccessController.getContext;
+
 
 public class ShowVideoActivity extends YouTubeBaseActivity {
     private YouTubePlayerView youTubePlayerView;
@@ -55,7 +58,7 @@ public class ShowVideoActivity extends YouTubeBaseActivity {
     private ListView downloadList;
     private DownloadListAdapter Adapter;
     private ArrayList<DownloadData> DownloadDataArrayList = new ArrayList<DownloadData>();
-
+    Typeface font ;
     long reference;
     String DownloadPath;
 
@@ -73,7 +76,7 @@ public class ShowVideoActivity extends YouTubeBaseActivity {
         stopbutton = (Button) findViewById(R.id.Stopbutton);
         stopbutton.setVisibility(View.INVISIBLE);
 
-
+        font  = Typeface.createFromAsset(getApplication().getAssets(), "title_font.otf");
         titletv = (TextView) findViewById(R.id.titletv);
         descriptiontv = (TextView) findViewById(R.id.descriptiontv);
 
@@ -82,6 +85,7 @@ public class ShowVideoActivity extends YouTubeBaseActivity {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 youTubePlayer.loadVideo(videoIdA);
+//                youTubePlayer.release();
             }
 
             @Override
@@ -190,6 +194,7 @@ public class ShowVideoActivity extends YouTubeBaseActivity {
 
         //Sart Video
         titletv.setText(titleA);
+        titletv.setTypeface(font);
         descriptiontv.setText(descriptionA + "\n");
 //        Toast.makeText(getApplicationContext(), title + " \n " + videoId + " \n " + description, Toast.LENGTH_LONG).show();
     }
