@@ -94,13 +94,14 @@ public class VideoListActivity extends AppCompatActivity {
                 SearchThis(keyword);
             }
         });
+
         searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String videoId= ((TextView) view.findViewById(R.id.txGender)).getText().toString();
                 String title= ((TextView) view.findViewById(R.id.txUsername)).getText().toString();
                 String description= ((TextView) view.findViewById(R.id.txState)).getText().toString();
-                Intent i = new Intent(VideoListActivity.this, ShowVideoActivity.class);
+                Intent i = new Intent(VideoListActivity.this, DownloadAllActivity.class);
                 i.putExtra("videoId", videoId);
                 i.putExtra("title", title);
                 i.putExtra("description", description);
@@ -164,6 +165,7 @@ public class VideoListActivity extends AppCompatActivity {
                                 Adapter = new searchListAdapter(VideoListActivity.this, R.layout.my_row_layout, videoDataArrayList);
                                 searchList.setSelectionAfterHeaderView();
                                 Adapter.notifyDataSetChanged();
+                                searchList.invalidateViews();
                                 progressBar.setVisibility(View.INVISIBLE);
 
                             }

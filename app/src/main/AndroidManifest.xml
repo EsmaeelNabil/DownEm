@@ -18,20 +18,24 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateVisible|adjustPan">
             <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER"/>
-                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
+
+
         </activity>
         <activity
             android:name=".ShowVideoActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".IntroActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".DownloadAllActivity"
             android:theme="@style/AppTheme.NoActionBar">
 
-        </activity>
 
+        </activity>
     </application>
 
 </manifest>

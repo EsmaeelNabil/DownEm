@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.esmaeel.downem.DownloadAllActivity"
+    android:background="@drawable/downloadbg"
+    >
+
+
+    <TextView
+        android:id="@+id/downloadalltitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#4d2f3c"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="Title"
+        android:textAllCaps="true"
+        android:textColor="#f9f9f9f9"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/downloadview">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <ProgressBar
+                android:id="@+id/DownloadProgressbar"
+                style="@style/CustomProgressBarHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_weight="1.9"
+                android:padding="3dp"
+                android:progress="222" />
+
+            <TextView
+                android:id="@+id/progresstv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="end"
+                android:text="100 mb"
+                android:textAllCaps="true"
+                android:textColor="#f9f9f9f9"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/stopbuttonall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/btnbgyellow"
+            android:text="Cancel download"
+            android:textColor="#000" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/playbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/btnbgyellow"
+        android:text="Play the Video"
+        android:textColor="#000" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/ic_file_download_white_24dp" />
+
+        <Button
+            android:id="@+id/mp3button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="@drawable/searchedittext"
+            android:paddingLeft="15dp"
+            android:text="Download IN MP3"
+            android:textAlignment="textStart"
+            android:textColor="#ffffff" />
+    </FrameLayout>
+
+    <ListView
+        android:id="@+id/download_all_search_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bgborder" />
+</LinearLayout>
