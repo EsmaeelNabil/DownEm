@@ -5,4 +5,6 @@ to get the download url of the Youtube video and audio files
  - uses #Volley libirary for parsing Json
 # downloading 
 the app uses this https://github.com/amitshekhariitbhu/Fast-Android-Networking libirary for the download part 
-### APK : https://workupload.com/file/uG5b6wR
+https://www.saveoffline.com/api/ as an API for getting videos download url's.
+and https://github.com/Karumi/Dexter For handling runtime permissions.
+### APK : https://workupload.com/file/R9vm3TWV
