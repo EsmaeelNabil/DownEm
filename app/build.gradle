@@ -30,7 +30,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.mcxiaoke.volley:library:1.0.19'
-    compile 'com.amitshekhar.android:android-networking:1.0.0'
+    compile 'com.amitshekhar.android:android-networking:1.0.2'
     compile 'com.ajts.androidmads.youtubemp3:youtubemp3:1.0.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
