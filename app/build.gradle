@@ -32,7 +32,7 @@ dependencies {
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.amitshekhar.android:android-networking:1.0.0'
     compile 'com.ajts.androidmads.youtubemp3:youtubemp3:1.0.0'
-    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'de.hdodenhof:circleimageview:2.2.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.github.apl-devs:appintro:v4.2.2'
     compile 'org.jsoup:jsoup:1.10.3'
